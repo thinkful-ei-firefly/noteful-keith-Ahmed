@@ -46,6 +46,13 @@ main {
   border: #282c34 solid 2px;
   margin: 10px;
 }
+.selected{
+  background-color: #61dafb;
+}
+.body{
+  font-size: 18px;
+  padding: 20px;
+}
 
 
 
