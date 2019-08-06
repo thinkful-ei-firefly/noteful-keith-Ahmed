@@ -17,7 +17,7 @@ class App extends React.Component{
   }
 
   findNote (noteId) {
-    return Store.notes.find(notes => noteId.id === noteId)
+    return Store.notes.find(notes => notes.id === noteId)
   }
 
   render(){
@@ -28,7 +28,12 @@ class App extends React.Component{
         
         <Switch>
           <Route exact path = "/folders/:folderId" render = {props => <Folder {...props} folders = {Store.folders}/>}/>
-          <Route exact path = "/notes/:noteId" render = {props => <Folder {...props} folders = {Store.folders} note= {findNote(props.match.params.noteId)} folderName = {findFolder(note.folderId)}  />}/>
+          <Route exact path = "/notes/:noteId" render = {props => {
+            const {noteId} = props.match.params;
+            const note = this.findNote(noteId);
+            const folderName = this.findFolder(note.folderId);
+            return <Folder {...props} folders = {Store.folders} folderName = {folderName}/>
+          }}/>
           <Route  render = {() => <Folder folders = {Store.folders}/>}/>
         </Switch>
 

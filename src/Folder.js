@@ -3,7 +3,8 @@ import {Link} from 'react-router-dom';
 
 function Folder(props){
   //takes in id and name
-let folds = '';
+let folds = [];
+console.log(props);
   if (props.match === undefined){
     folds = props.folders.map(item => {
       return (
@@ -37,10 +38,15 @@ let folds = '';
         <p><Link>New Folder</Link></p>
       </div>);
   } else { //if noteID
-    folds = (
+    folds.push(
         <div  className = "folder" key = {123345}>
           <p><Link to = {"/" }>Go Back</Link></p>
         </div>
+    );
+    folds.push(
+      <div className = "folder" key = {50923}>
+        <p>{props.folderName.name}</p>
+      </div>
     );
   }
 
